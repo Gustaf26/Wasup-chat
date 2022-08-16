@@ -26,10 +26,19 @@
 
 .main-body .mdl-grid {
   padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .main-body .mdl-cell {
   margin: 0;
+}
+
+#main-container {
+  display: flex;
+  width: 100%;
 }
 
 .side-panel {
@@ -37,9 +46,27 @@
 }
 
 .header {
-  padding: 10px 15px !important;
+  padding: 10px 0px !important;
   background-color: #eee;
-  max-height: 60px;
+  height: 60px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+#header-left {
+  display: flex;
+  align-items: center;
+  /* width: 30vw; */
+  height: 60px;
+}
+
+#header-right {
+  display: flex;
+  align-items: center;
+  width: 70vw;
+  justify-content: flex-start;
 }
 
 .avatar img {
@@ -107,8 +134,23 @@
   overflow-y: auto;
 }
 
+.logged-in-contact {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 1rem;
+}
+
 .mdl-list {
-  margin: 0;
+  margin: 0 1rem;
+}
+
+.mdl-list span {
+  margin-left: 2rem;
+}
+
+.mdl-list li {
+  margin-bottom: 0.8rem;
 }
 
 .mdl-list__item--two-line {
@@ -117,36 +159,65 @@
 }
 
 .header .title-name {
-    font-size: 18px;
-    margin-left: 12px;
+  font-size: 18px;
+  margin-left: 12px;
 }
 
 .main-panel {
-    width: calc(66.6666666667% + 16px);
+  width: 66vw;
+  position: absolute;
+  top: 13%;
+  left: 50%;
+}
+
+.chat-container {
+  padding-top: 10px;
+  position: absolute;
+  top: 23;
+  left: 50;
+}
+
+#chat-msgs {
+  position: absolute;
+  left: 70;
+  width: 60vw;
+}
+
+.init-msg {
+  font-style: italic !important;
+}
+
+.chat-msg {
+  padding: 5px;
 }
 
 .enter-message {
-    position: absolute;
-    bottom: 0;
-    width: 115vh;
-    background-color: #f5f1ee;
-    padding: 6px 12px;
+  position: fixed;
+  bottom: 0;
+  width: 85% !important;
+  background-color: #f5f1ee;
+  padding: 6px 12px;
+  display: flex;
+}
+
+#messagefield {
+  max-width: 60vw;
 }
 
 .enter-message .mdl-cell {
-    /*margin: 8px;*/
+  margin: 8px;
 }
 
 .message-text-container {
-    width: calc(83.3333333333% + 16px);
+  width: calc(83.3333333333% + 16px);
 }
 
 .send-button-container {
-    width: calc(8.3333333333% - 8px);
+  width: calc(8.3333333333% - 8px);
 }
 
 .send-button-container button {
-    float: right;
+  float: right;
 }
 
 #messagefield {
@@ -162,4 +233,22 @@
 
 #messagefield:focus {
   outline: 0;
+}
+
+@media screen and (min-width: 850px) and (max-width: 1200px) {
+  #header-left {
+    margin-left: -8% !important;
+  }
+  .main-panel {
+    left: 35%;
+  }
+}
+
+@media screen and (min-width: 1201px) and (max-width: 1700px) {
+  #header-left {
+    margin-left: -6% !important;
+  }
+  .main-panel {
+    left: 33%;
+  }
 }
