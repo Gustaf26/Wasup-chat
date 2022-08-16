@@ -179,6 +179,7 @@
 
 #chat-msgs {
   position: absolute;
+  top: 5vh;
   left: 70;
   width: 60vw;
 }
@@ -189,6 +190,7 @@
 
 .chat-msg {
   padding: 5px;
+  margin-top: 1rem;
 }
 
 .enter-message {

@@ -1,6 +1,8 @@
 // import { createWlcMessage } from "./connect4.js"
 let ownUser
 let allUsers = []
+let userColorOne = Math.floor(Math.random(300) * 300)
+let userColorTwo = Math.floor(Math.random(300) * 300)
 
 function showUser(userName) {
   let userEl = document.createElement("div")
@@ -83,16 +85,29 @@ function receiveMsgs(websocket) {
       // Update the UI with initial msg and join link
       const initElement = document.createElement("div")
       initElement.className = "init-msg"
-      initElement.innerHTML = `<p>${event.msg}</p>
-                                 <br>
-        <a href="http://localhost:8000/?join=${event.join}">Send chat-id to a friend: localhost:8000/?join=${event.join}</p>`
+      initElement.innerHTML = `<p style="margin-top:1.5rem;">${event.msg}</p>
+        <a href="http://127.0.0.1:5500/?join=${event.join}">Send chat-id to a friend: localhost:8000/?join=${event.join}</p>`
       document.getElementById("chat-msgs").append(initElement)
     } else if (event.type == "msg") {
       // Update the UI with the msg.
       const chatElement = document.createElement("div")
       chatElement.className = "chat-msg"
-      chatElement.innerHTML = event.msg
-      document.getElementById("chat-msgs").append(chatElement)
+      if (event.msg.includes(">")) {
+        let userPrefixText = event.msg.slice(0, event.msg.indexOf(">") + 1)
+        let msgBody = event.msg.slice(
+          event.msg.indexOf(">") + 1,
+          event.msg.length
+        )
+        document.getElementById("chat-msgs").append(chatElement)
+        chatElement.innerHTML =
+          `<span style="color:${event.userColor}; font-weight:bold">
+        ${userPrefixText}</span>` + `<span>${msgBody}</span>`
+      } else {
+        chatElement.innerHTML = event.msg
+        chatElement.style.fontStyle = "italic"
+        document.getElementById("chat-msgs").append(chatElement)
+      }
+
       console.log(event.users)
       if (event.msg == "User has logged in") {
         event.users.length > 1
@@ -118,7 +133,8 @@ function sendMsg(websocket) {
   let msg = document.getElementById("messagefield").value
   const event = {
     type: "msg",
-    msg: msg,
+    msg: `${ownUser} > ` + msg,
+    userColor: `rgb(${userColorOne},20,${userColorTwo})`,
   }
   websocket.send(JSON.stringify(event))
 }
