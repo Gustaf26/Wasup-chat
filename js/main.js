@@ -57,6 +57,79 @@ function playMsgSound() {
   soundFile.play()
 }
 
+function showEmoticons() {
+  let people = [
+    {
+      emoji: "😀",
+      title: "Grinning Face",
+    },
+    {
+      emoji: "😃",
+      title: "Grinning Face with Big Eyes",
+    },
+    {
+      emoji: "😄",
+      title: "Grinning Face with Smiling Eyes",
+    },
+    {
+      emoji: "😁",
+      title: "Beaming Face with Smiling Eyes",
+    },
+    {
+      emoji: "😆",
+      title: "Grinning Squinting Face",
+    },
+    {
+      emoji: "😅",
+      title: "Grinning Face with Sweat",
+    },
+    {
+      emoji: "🤣",
+      title: "Rolling on the Floor Laughing",
+    },
+    {
+      emoji: "😂",
+      title: "Face with Tears of Joy",
+    },
+    {
+      emoji: "🙂",
+      title: "Slightly Smiling Face",
+    },
+    {
+      emoji: "🙃",
+      title: "Upside-Down Face",
+    },
+    {
+      emoji: "😉",
+      title: "Winking Face",
+    },
+    {
+      emoji: "😊",
+      title: "Smiling Face with Smiling Eyes",
+    },
+    {
+      emoji: "😇",
+      title: "Smiling Face with Halo",
+    },
+  ]
+
+  let emoticonList = document.createElement("ul")
+  emoticonList.id = "emoticon-list"
+
+  let messageFooter = document.querySelector(".emoticons-container")
+  messageFooter.append(emoticonList)
+
+  people.map(emoticon => {
+    let emoticonLi = document.createElement("li")
+    emoticonLi.innerHTML = emoticon.emoji
+    emoticonList.append(emoticonLi)
+  })
+}
+
+document.getElementById("emoticons-button").addEventListener("click", () => {
+  showEmoticons()
+})
+
 function showContact(users) {
   console.log(ownUser)
   let contactList = document.getElementById("mdl-list")

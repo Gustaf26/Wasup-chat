@@ -43,6 +43,7 @@
 
 .side-panel {
   border-right: 1px solid #dbdbdb;
+  width: 27vw;
 }
 
 .header {
@@ -182,6 +183,8 @@
   top: 5vh;
   left: 70;
   width: 60vw;
+  overflow: hidden;
+  max-height: 90vh;
 }
 
 .init-msg {
@@ -237,6 +240,38 @@
   outline: 0;
 }
 
+#emoticon-list {
+  margin: 1rem 0.2rem 1rem 0.1rem;
+  display: flex;
+  z-index: 1000;
+  background-color: darkgrey;
+  list-style-type: none;
+  position: fixed;
+  bottom: 10%;
+  width: 26vw;
+  flex-wrap: wrap;
+  padding-left: 0.5rem;
+  justify-content: center;
+}
+
+#emoticon-list li {
+  margin-right: 0.3rem;
+}
+
+@media screen and (max-width: 500px) {
+  .side-panel {
+    width: 26%;
+  }
+  #emoticon-list {
+    width: 88%;
+    margin: 1rem 0 1rem -0.1rem;
+  }
+}
+@media screen and (max-width: 850px) {
+  #chat-msgs {
+    left: -20%;
+  }
+}
 @media screen and (min-width: 850px) and (max-width: 1200px) {
   #header-left {
     margin-left: -8% !important;

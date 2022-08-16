@@ -72,7 +72,7 @@
           <div id="header-right"></div>
         </div>
         <div id="main-container">
-          <div class="mdl-cell mdl-cell--4-col side-panel">
+          <div class="mdl-cell side-panel">
             <div class="search-contact">
               <div class="mdl-grid search-contact-inner">
                 <div class="mdl-cell mdl-cell--2-col search-icon-container">
@@ -103,17 +103,34 @@
             <div id="chat-msgs"></div>
           </div>
         </div>
-        <div class="enter-message">
+        <div class="emoticons-container"></div>
+        <div class="enter-message" id="enter-message">
           <!-- <div class="mdl-grid"> -->
           <div class="mdl-cell mdl-cell--1-col">
-            <button
+            <div class="uk-container uk-container-small uk-section">
+              <div class="uk-margin-large">
+                <button
+                  type="button"
+                  id="emoticons-button"
+                  class="mdl-button mdl-button--icon"
+                >
+                  <i class="material-icons">insert_emoticon</i>
+                </button>
+              </div>
+            </div>
+            <!-- <button
               class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
             >
               <i class="material-icons">insert_emoticon</i>
-            </button>
+            </button> -->
           </div>
           <div class="mdl-cell mdl-cell--10-col message-text-container">
-            <input type="text" id="messagefield" placeholder="Send message" />
+            <input
+              type="text"
+              class="demo"
+              id="messagefield"
+              placeholder="Send message"
+            />
           </div>
           <div class="mdl-cell mdl-cell--1-col send-button-container">
             <button
@@ -130,5 +147,16 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/main.js" type="module"></script>
+    <!-- <script src="js/vanillaEmojiPicker.js" type="module">
+            new EmojiPicker({
+          trigger: [
+              {
+                selector: '.trigger',
+                insertInto: ['.demo'] // '.selector' can be used without array
+              },
+          ],
+          closeButton: true,
+      });
+    </script> -->
   </body>
 </html>
